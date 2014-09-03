@@ -1,1 +1,1 @@
-module.exports = require('./esql.js')
+module.exports = require('./lib/esql.js')
