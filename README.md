@@ -42,50 +42,53 @@ var dsl = fn(name, age)
 ```javascript
 esql('from org / documents with ("from": 20, size: 10) \
       filter expired == false, level == 3..5 \
-      match name = "foo" (boost: 2), description = "bar" \
+      match name = "foo" (boost: 2), description = "bar" with (minimum_should_match: 1)\
       sort name asc, description')
 ```
-results in the following DSL:
+results in the following object:
 ```json
 {
   "body": {
-    "filtered": {
-      "filter": {
-        "bool": {
-          "must": [
-            {
-              "term": {
-                "expired": false
-              }
-            },
-            {
-              "range": {
-                "level": {
-                  "gte": 3,
-                  "lte": 5
+    "query": {
+      "filtered": {
+        "filter": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "expired": false
+                }
+              },
+              {
+                "range": {
+                  "level": {
+                    "gte": 3,
+                    "lte": 5
+                  }
                 }
               }
-            }
-          ]
-        }
-      },
-      "query": {
-        "bool": {
-          "should": [
-            {
-              "match": {
-                "name": {
-                  "boost": 2,
-                  "query": "foo"
+            ]
+          }
+        },
+        "query": {
+          "bool": {
+            "minimum_should_match": 1,
+            "should": [
+              {
+                "match": {
+                  "name": {
+                    "boost": 2,
+                    "query": "foo"
+                  }
+                }
+              },
+              {
+                "match": {
+                  "description": "bar"
                 }
               }
-            },
-            {
-              "match": {
-                "description": "bar"
-              }
-            }
-          ]
+            ]
+          }
         }
       }
     },
