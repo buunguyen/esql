@@ -2,7 +2,8 @@ var esql = require('../lib/esql')
 
 var dsl = esql('from org / documents with ("from": 20, size: 10) \
                 filter expired == false, level == 3..5 \
-                match name = "foo" (boost: 2), description = "bar"')
+                match name = "foo" (boost: 2), description = "bar" \
+                sort name asc, description')
 
 json(dsl)
 

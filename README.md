@@ -42,7 +42,8 @@ var dsl = fn(name, age)
 ```javascript
 esql('from org / documents with ("from": 20, size: 10) \
       filter expired == false, level == 3..5 \
-      match name = "foo" (boost: 2), description = "bar"')
+      match name = "foo" (boost: 2), description = "bar" \
+      sort name asc, description')
 ```
 results in the following DSL:
 ```json
@@ -87,7 +88,19 @@ results in the following DSL:
           ]
         }
       }
-    }
+    },
+    "sort": [
+      {
+        "name": {
+          "order": "asc"
+        }
+      },
+      {
+        "description": {
+          "order": null
+        }
+      }
+    ]
   },
   "index": "org",
   "type": "documents",
