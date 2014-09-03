@@ -1,7 +1,11 @@
 {
   "name": "esql",
   "version": "0.0.1",
-  "description": "",
+  "description": "Friendly query language for Elasticsearch",
+  "keywords": [
+    "elasticsearch", "elastic", "search",
+    "dsl", "query", "esql"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "gulp"
