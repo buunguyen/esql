@@ -1,10 +1,11 @@
 ### ESQL (Elasticsearch Query Language)
 
-Elasticsearch is powerful, so is its DSL. But like most things, power comes at a cost: complexity. Even the simplest DSL queries are verbose and difficult to write. EQL is the answer.
+Elasticsearch is powerful, so is its DSL. But Elasticsearch DSL's power comes at a cost: complexity. Even the simplest queries can be verbose and difficult to write. ESQL simplifies DSL construction by compiling queries written in an SQL-like language to Elasticsearch DSL. By only supporting common features of the Elasticsearch DSL, ESQL queries can be kept very simple.
 
-ESQL compiles queries written in SQL-like syntax to Elasticsearch DSL. By only supporting common features of the Elasticsearch DSL, ESQL queries can be kept very smiple.
+The output of ESQL can be used directly as the search argument of [elasticsearch-js](https://github.com/elasticsearch/elasticsearch-js). However, you may pick different portions should you use another mechanism to connect to Elasticsearch. You can also augment the output however you like. Therefore, you are not locked in to only the features supported by ESQL.
 
-Because the output of ESQL is a full-blown Elasticsearch DSL tree, you can augment the tree however you like. For example, you can modify the tree to add behaviors not supported by ESQL. Therefore, you are not locked in to only the features supported by ESQL.
+**Note:** this is an early release of ESQL.
+
 
 ### Getting started
 Install ESQL
