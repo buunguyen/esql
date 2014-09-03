@@ -4,7 +4,7 @@ var expect = require('chai').expect
 
 describe('esql', function (){
   it('returns empty object if empty query is supplied', function () {
-    var expected = { body: {} }
+    var expected = { body: { query: {} } }
     expect(eql()).to.deep.equal(expected)
     expect(eql('')).to.deep.equal(expected)
     expect(eql('   \n   ')).to.deep.equal(expected)
@@ -101,7 +101,7 @@ describe('esql', function (){
       }
       
       function bool(res) {
-        return clause === 'filter' ? res.body.filtered.filter.bool : res.body.query.bool
+        return clause === 'filter' ? res.body.query.filtered.filter.bool : res.body.query.bool
       }
     })
   })
@@ -127,7 +127,7 @@ describe('esql', function (){
     })
 
     function bool(res) {
-      return res.body.filtered.filter.bool
+      return res.body.query.filtered.filter.bool
     }
   })
 
@@ -153,10 +153,10 @@ describe('esql', function (){
         type   : 'most_fields'
       })
     })
+    
     it('parses filtered query', function () {
       var res = eql('filter a = 1 match b = 2')
-      expect(res.body.query).to.be.undefined
-      expect(res.body.filtered.query.bool.should.match.b).to.equal(2)
+      expect(res.body.query.filtered.query.bool.should.match.b).to.equal(2)
     })
   })
 
@@ -180,14 +180,14 @@ describe('esql', function (){
   describe('Parameterization', function () {
     it('allows parameterize queries', function () {
       var res = eql('filter a = $1 match b = $2 (boost: $3)', true, 'foo', 2)
-      expect(res.body.filtered.filter.bool.should.term.a).to.equal(true)
-      expect(res.body.filtered.query.bool.should.match.b.query).to.equal('foo')
-      expect(res.body.filtered.query.bool.should.match.b.boost).to.equal(2)
+      expect(res.body.query.filtered.filter.bool.should.term.a).to.equal(true)
+      expect(res.body.query.filtered.query.bool.should.match.b.query).to.equal('foo')
+      expect(res.body.query.filtered.query.bool.should.match.b.boost).to.equal(2)
     })
 
     it('allows parameterize array elements', function () {
       var res = eql('filter a = [1, $1]', 2)
-      expect(res.body.filtered.filter.bool.should.terms.a).to.deep.equal([1, 2])
+      expect(res.body.query.filtered.filter.bool.should.terms.a).to.deep.equal([1, 2])
     })
   })
 
@@ -195,17 +195,17 @@ describe('esql', function (){
     it('precompiles for reuse', function () {
       var fn = eql.prepare('filter a = true')
       var res = fn()
-      expect(res.body.filtered.filter.bool.should.term.a).to.equal(true)
+      expect(res.body.query.filtered.filter.bool.should.term.a).to.equal(true)
     })
 
     it('precompiles queries with parameters', function () {
       var fn = eql.prepare('filter a = $1')
       
       var res = fn(true)
-      expect(res.body.filtered.filter.bool.should.term.a).to.equal(true)
+      expect(res.body.query.filtered.filter.bool.should.term.a).to.equal(true)
 
       var res = fn(false)
-      expect(res.body.filtered.filter.bool.should.term.a).to.equal(false)
+      expect(res.body.query.filtered.filter.bool.should.term.a).to.equal(false)
     })
   })
 

@@ -1,6 +1,6 @@
 {
   "name": "esql",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Friendly query language for Elasticsearch",
   "keywords": [
     "elasticsearch", "elastic", "search",
