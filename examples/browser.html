@@ -1,0 +1,14 @@
+<html>
+<head>
+  <script src="lodash.js"></script>
+  <script src="esql.min.js"></script>
+  <script>
+    var dsl = esql('from org / documents with ("from": 20, size: 10) \
+                    filter expired == false, level == 3..5 \
+                    match name = "foo" (boost: 2), description = "foo bar" (operator: "and") with (minimum_should_match: 1) \
+                    sort name asc, description')
+
+    console.log(JSON.stringify(dsl, null, 2))
+  </script>
+</head>
+</html>

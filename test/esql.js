@@ -30,7 +30,6 @@ describe('esql', function (){
 
     it('parses general options', function () {
       var res = eql('from _ with ("from": 10, size: 20)')
-      json(res)
       expect(res.from).to.equal(10)
       expect(res.size).to.equal(20)
     })

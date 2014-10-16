@@ -1,0 +1,30 @@
+{
+  "name": "esql",
+  "version": "0.0.3",
+  "description": "Humane query language for Elasticsearch",
+  "homepage": "https://github.com/buunguyen/esql",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buunguyen/esql"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1"
+  },
+  "keywords": [
+    "elasticsearch", "elastic", "search",
+    "dsl", "query", "esql"
+  ],
+  "main": "browser/esql.min.js",
+  "license": "MIT",
+  "authors": [{
+    "name": "Buu Nguyen",
+    "email": "buunguyen@gmail.com"
+  }],
+  "ignore": [
+    "index.js",
+    "package.json",
+    ".gitignore",
+    ".editorconfig",
+    ".jshintrc"
+  ]
+}

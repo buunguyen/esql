@@ -4,6 +4,7 @@ Elasticsearch is powerful, so is its Query DSL. But Elasticsearch Query DSL's po
 
 The output of ESQL can be used directly as the search argument of [elasticsearch-js](https://github.com/elasticsearch/elasticsearch-js). However, you may pick different portions should you use another mechanism to connect to Elasticsearch. You can also augment the output however you like. Therefore, you are not locked in to only the features supported by ESQL.
 
+ESQL can be used in both Node and browser environments.
 
 #### Features
 
@@ -21,23 +22,30 @@ The output of ESQL can be used directly as the search argument of [elasticsearch
 
 
 ### Getting started
-Install ESQL
+Install ESQL from NPM or Bower
 ```
-npm install esql
+npm install --save esql
+```
+
+```
+bower install --save esql
+```
+
+Import `esql` object in Node
+```javascript
+var esql = require('esql')
+```
+
+Import `esql` object in browser (after referencing `browser/esql.min.js`)
+
+```javascript
+var esql = window.esql
 ```
 
 Build DSL query
 ```javascript
-var esql = require('esql')
 var query = 'ESQL QUERY HERE'
 var dsl = esql(query)
-```
-
-Consume DSL query with [elasticsearch-js](https://github.com/elasticsearch/elasticsearch-js)
-```javascript
-var es = require('elasticsearch')
-var client = new es.Client({...})
-client.search(dsl).then(callback, errback)
 ```
 
 Parameterize queries
@@ -49,6 +57,12 @@ Precompile queries
 ```javascript
 var fn = esql.prepare('match name = $1, age = $2')
 var dsl = fn(name, age)
+```
+
+Consume DSL query with [elasticsearch-js](https://github.com/elasticsearch/elasticsearch-js)
+```javascript
+var client = new es.Client({...})
+client.search(dsl).then(callback, errback)
 ```
 
 #### Example

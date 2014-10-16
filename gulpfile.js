@@ -1,7 +1,12 @@
-var gulp     = require('gulp')
-  , es       = require('event-stream')
-  , series   = require('stream-series')
-  , $        = require('gulp-load-plugins')()
+var gulp       = require('gulp')
+  , es         = require('event-stream')
+  , series     = require('stream-series')  
+  , $          = require('gulp-load-plugins')()
+  , fs         = require('fs')
+  , source     = require('vinyl-source-stream')
+  , buffer     = require('vinyl-buffer')
+  , browserify = require('browserify')
+  , shims      = require('browserify-global-shim').configure({ 'lodash': '_' })
 
 function pipe(src, transforms, dest) { 
   if (typeof transforms === 'string') {
@@ -16,10 +21,20 @@ function pipe(src, transforms, dest) {
   return stream
 }
 
-gulp.task('default', ['test'])
+gulp.task('default', ['build'])
+
+gulp.task('build', ['test'], function () {
+  return pipe(
+    browserify('./lib/esql.js', { standalone: 'esql' }).bundle(),
+    [ source('esql.js'), buffer(),
+      gulp.dest('./browser'), 
+      $.uglify(), $.rename('esql.min.js')
+    ],
+    './browser')
+})
 
 gulp.task('test', ['peg'], function () {
-  return pipe('./test/**/*.js', [$.mocha({reporter: 'spec'})])
+  return pipe('./test/**/*.js', [$.mocha({ reporter: 'spec' })])
 })
 
 gulp.task('peg', ['jshint'], function () {

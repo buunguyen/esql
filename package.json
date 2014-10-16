@@ -1,10 +1,14 @@
 {
   "name": "esql",
-  "version": "0.0.2",
-  "description": "Friendly query language for Elasticsearch",
+  "version": "0.0.3",
+  "description": "Humane query language for Elasticsearch",
   "keywords": [
-    "elasticsearch", "elastic", "search",
-    "dsl", "query", "esql"
+    "elasticsearch",
+    "elastic",
+    "search",
+    "dsl",
+    "query",
+    "esql"
   ],
   "main": "index.js",
   "scripts": {
@@ -20,6 +24,14 @@
     "url": "https://github.com/buunguyen/esql/issues"
   },
   "homepage": "https://github.com/buunguyen/esql",
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "lodash": "global:_"
+  },
   "dependencies": {
     "lodash": "^2.4.1"
   },
@@ -37,6 +49,12 @@
     "gulp-jshint": "^1.8.4",
     "jshint-stylish": "^0.4.0",
     "gulp-rename": "^1.2.0",
-    "pegjs": "^0.8.0"
+    "pegjs": "^0.8.0",
+    "browserify": "^6.1.0",
+    "browserify-shim": "^3.8.0",
+    "gulp-uglify": "^1.0.1",
+    "vinyl-source-stream": "^1.0.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-transform": "0.0.1"
   }
 }

@@ -1,4 +1,4 @@
-var esql = require('../lib/esql')
+var esql = require('esql')
 
 var dsl = esql('from org / documents with ("from": 20, size: 10) \
                 filter expired == false, level == 3..5 \
