@@ -1,11 +1,11 @@
 {
   "name": "esql",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Humane query language for Elasticsearch",
-  "homepage": "https://github.com/buunguyen/esql",
+  "homepage": "https://github.com/hmsonline/esql",
   "repository": {
     "type": "git",
-    "url": "https://github.com/buunguyen/esql"
+    "url": "https://github.com/hmsonline/esql"
   },
   "dependencies": {
     "lodash": "^2.4.1"

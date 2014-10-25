@@ -5,5 +5,7 @@ pids
 *.pid
 *.seed
 
+.idea
+
 dist
 node_modules

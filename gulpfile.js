@@ -5,8 +5,7 @@ var gulp       = require('gulp')
   , fs         = require('fs')
   , source     = require('vinyl-source-stream')
   , buffer     = require('vinyl-buffer')
-  , browserify = require('browserify')
-  , shims      = require('browserify-global-shim').configure({ 'lodash': '_' })
+  , browserify = require('browserify');
 
 function pipe(src, transforms, dest) { 
   if (typeof transforms === 'string') {

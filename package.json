@@ -1,6 +1,6 @@
 {
   "name": "esql",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Humane query language for Elasticsearch",
   "keywords": [
     "elasticsearch",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/buunguyen/esql"
+    "url": "https://github.com/hmsonline/esql"
   },
   "author": "Buu Nguyen <buunguyen@gmail.com> (https://github.com/buunguyen)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/buunguyen/esql/issues"
+    "url": "https://github.com/hmsonline/esql/issues"
   },
-  "homepage": "https://github.com/buunguyen/esql",
+  "homepage": "https://github.com/hmsonline/esql",
   "browserify": {
     "transform": [
       "browserify-shim"
