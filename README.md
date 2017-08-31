@@ -1,3 +1,5 @@
+### Warning: this library only supports Elasticsearch 1.x and 2.x at the moment.
+
 ### ESQL (Elasticsearch Query Language)
 
 Elasticsearch is powerful, so is its Query DSL. But Elasticsearch Query DSL's power comes at a cost: complexity. Even the simplest queries can be verbose and difficult to write. ESQL simplifies the construction of Query DSL by compiling queries written in an SQL-like language to Elasticsearch DSL. By only supporting essential features of the Query DSL, ESQL queries can be kept very simple.
