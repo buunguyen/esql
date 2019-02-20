@@ -1,3 +1,5 @@
+[![Code Shelter](https://www.codeshelter.co/static/badges/badge-flat.svg)](https://www.codeshelter.co/)
+
 ### Warning: this library only supports Elasticsearch 1.x and 2.x at the moment.
 
 ### ESQL (Elasticsearch Query Language)
